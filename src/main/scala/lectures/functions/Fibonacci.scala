@@ -12,10 +12,10 @@ package lectures.functions
 object Fibonacci extends App {
 
   // Task 2
-  def fibs(num: Int) = {
+  def fibs(num: Int): Int = {
     if (num == 1) 1
-    if (num == 2) 1
-    //fibs(num - 1) + fibs(num - 2)
+    else if (num == 2) 1
+    else fibs(num - 1) + fibs(num - 2)
   }
 
   println(fibs(9))
