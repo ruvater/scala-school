@@ -35,13 +35,19 @@ object Fibonacci extends App {
 object Fibonacci2 extends App {
 
   def fibs2(num: Int) =
-    if (num <= 2) Array(1, 1, 2)(num)
-    else fibsImpl(num: Int, Array(1, 1, 2))(num)
+    // В прошлой реализации числа начинаются с индекса 1
+    // здесь же предполагалось почему-то, что c 0
+    // так что здесь они тоже будут начинаться с индекса 1
+    if (num <= 2) Array(0, 1, 1)(num)
+    else fibsImpl(num, Array(0, 1, 1), 3)(num)
 
-  private def fibsImpl(num: Int, acc: Array[Int]): Array[Int] = ???
+  private def fibsImpl(num: Int, acc: Array[Int], len: Int): Array[Int] = {
+    if (num <= acc.length - 1) acc
+    else fibsImpl(num, acc :+ (acc(len - 1) + acc(len - 2)), len + 1)
+  }
 
   println(fibs2(16))
-  //println(fibs(1000))
+  //println(fibs2(1000))
 }
 
 
