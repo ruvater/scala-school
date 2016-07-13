@@ -39,7 +39,7 @@ object SQLAPI extends App {
 
   def connection(resource: String) = Connection(resource)
   def execute(resource: String, sql: String): String = {
-    val executeFunction = (logParameter[String] _ andThen connection andThen logParameter[Connection] andThen openConnection)(resource)
+    val executeFunction = (logParameter[String] _ andThen connection andThen logParameter[Connection] _ andThen openConnection)(resource)
     (executeFunction andThen logParameter[String] _)(sql)
   }
 
