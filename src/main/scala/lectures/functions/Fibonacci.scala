@@ -42,7 +42,7 @@ object Fibonacci2 extends App {
     else fibsImpl(num, Array(0, 1, 1), 3)(num)
 
   private def fibsImpl(num: Int, acc: Array[Int], len: Int): Array[Int] = {
-    if (num <= acc.length - 1) acc
+    if (num <= len - 1) acc
     else fibsImpl(num, acc :+ (acc(len - 1) + acc(len - 2)), len + 1)
   }
 
